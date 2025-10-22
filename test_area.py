@@ -1,12 +1,12 @@
 import pytest
 from area import calculate_square_area
 
-# Prueba que pasara
+# Prueba que pasará 
 def test_area_correct():
     assert calculate_square_area(4) == 16
 
-# Prueba que fallará para el 2do commit 
+# Prueba que pasará (Test 2 - Corregida)
 def test_negative_side_error():
-    # Vamos a forzar un fallo *quitando* la excepción temporalmente
-    # para el 2do commit y luego lo corregiremos.
-    assert calculate_square_area(-5) == 25 # Esto es lo que va a fallar
+    # El test debe verificar que la función LANCE un error, no que devuelva un valor
+    with pytest.raises(ValueError, match="El lado no puede ser negativo."):
+        calculate_square_area(-5)
